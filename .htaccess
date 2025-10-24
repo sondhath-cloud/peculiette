@@ -1,0 +1,25 @@
+# Protect admin area (uncomment to enable basic auth)
+# AuthType Basic
+# AuthName "Admin Area"
+# AuthUserFile /path/to/.htpasswd
+# Require valid-user
+
+# Enable PHP error reporting (remove in production)
+php_flag display_errors on
+php_value error_reporting E_ALL
+
+# Set proper MIME types
+AddType application/json .json
+
+# Enable CORS for API endpoints
+<Files "submit-website-request.php">
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "POST, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type"
+</Files>
+
+<Files "get-website-requests.php">
+    Header always set Access-Control-Allow-Origin "*"
+    Header always set Access-Control-Allow-Methods "GET, OPTIONS"
+    Header always set Access-Control-Allow-Headers "Content-Type"
+</Files>

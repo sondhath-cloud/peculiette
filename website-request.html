@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Development Request - Peculiette</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        .form-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .form-header {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .form-header h1 {
+            color: #333;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+        
+        .form-header p {
+            color: #666;
+            font-size: 1.1rem;
+        }
+        
+        .form-section {
+            margin-bottom: 40px;
+        }
+        
+        .section-title {
+            color: #333;
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #667eea;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-row {
+            display: flex;
+            gap: 20px;
+        }
+        
+        .form-row .form-group {
+            flex: 1;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+        
+        input, textarea, select {
+            width: 100%;
+            padding: 12px 16px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+        
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .checkbox-item:hover {
+            background: #e9ecef;
+            border-color: #667eea;
+        }
+        
+        .checkbox-item input[type="checkbox"] {
+            width: auto;
+            margin-right: 10px;
+        }
+        
+        .checkbox-item label {
+            margin: 0;
+            cursor: pointer;
+        }
+        
+        .btn-submit {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 40px;
+            font-size: 18px;
+            font-weight: 600;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-top: 20px;
+        }
+        
+        .btn-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.3);
+        }
+        
+        .btn-submit:disabled {
+            opacity: 0.7;
+            cursor: not-allowed;
+            transform: none;
+        }
+        
+        .form-status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            display: none;
+        }
+        
+        .success-message {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .error-message {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .btn-loading {
+            display: none;
+        }
+        
+        @media (max-width: 768px) {
+            .form-row {
+                flex-direction: column;
+                gap: 0;
+            }
+            
+            .form-container {
+                margin: 10px;
+                padding: 20px;
+            }
+            
+            .form-header h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <div class="form-header">
+            <h1>Website Development Request</h1>
+            <p>Tell us about your project and we'll create a custom solution for you</p>
+        </div>
+
+        <form id="website-request-form">
+            <!-- Contact Information -->
+            <div class="form-section">
+                <h2 class="section-title">Contact Information</h2>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" id="phone" name="phone">
+                    </div>
+                    <div class="form-group">
+                        <label for="company">Company/Organization</label>
+                        <input type="text" id="company" name="company">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Project Details -->
+            <div class="form-section">
+                <h2 class="section-title">Project Details</h2>
+                <div class="form-group">
+                    <label for="website_type">What type of website do you need? *</label>
+                    <select id="website_type" name="website_type" required>
+                        <option value="">Select website type</option>
+                        <option value="Business Website">Business Website</option>
+                        <option value="E-commerce Store">E-commerce Store</option>
+                        <option value="Portfolio/Personal">Portfolio/Personal</option>
+                        <option value="Blog/Content Site">Blog/Content Site</option>
+                        <option value="Web Application">Web Application</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="budget">What's your budget range? *</label>
+                    <select id="budget" name="budget" required>
+                        <option value="">Select budget range</option>
+                        <option value="Under $500">Under $500</option>
+                        <option value="$500 - $1,000">$500 - $1,000</option>
+                        <option value="$1,000 - $2,500">$1,000 - $2,500</option>
+                        <option value="$2,500 - $5,000">$2,500 - $5,000</option>
+                        <option value="$5,000+">$5,000+</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="timeline">When do you need this completed? *</label>
+                    <select id="timeline" name="timeline" required>
+                        <option value="">Select timeline</option>
+                        <option value="ASAP (Rush job)">ASAP (Rush job)</option>
+                        <option value="1-2 weeks">1-2 weeks</option>
+                        <option value="1 month">1 month</option>
+                        <option value="2-3 months">2-3 months</option>
+                        <option value="No rush">No rush</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- Features -->
+            <div class="form-section">
+                <h2 class="section-title">What features do you need?</h2>
+                <div class="checkbox-group">
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="responsive" name="features[]" value="Responsive Design">
+                        <label for="responsive">Responsive Design</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="seo" name="features[]" value="SEO Optimization">
+                        <label for="seo">SEO Optimization</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="contact-form" name="features[]" value="Contact Form">
+                        <label for="contact-form">Contact Form</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="blog" name="features[]" value="Blog/News Section">
+                        <label for="blog">Blog/News Section</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="ecommerce" name="features[]" value="E-commerce">
+                        <label for="ecommerce">E-commerce</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="cms" name="features[]" value="Content Management">
+                        <label for="cms">Content Management</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="analytics" name="features[]" value="Analytics Integration">
+                        <label for="analytics">Analytics Integration</label>
+                    </div>
+                    <div class="checkbox-item">
+                        <input type="checkbox" id="social" name="features[]" value="Social Media Integration">
+                        <label for="social">Social Media Integration</label>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Additional Information -->
+            <div class="form-section">
+                <h2 class="section-title">Additional Information</h2>
+                <div class="form-group">
+                    <label for="message">Tell us more about your project</label>
+                    <textarea id="message" name="message" rows="4" placeholder="Describe your vision, target audience, specific requirements, or any questions you have..."></textarea>
+                </div>
+            </div>
+
+            <button type="submit" class="btn-submit">
+                <span class="btn-text">Submit Request</span>
+                <span class="btn-loading">Submitting...</span>
+            </button>
+
+            <div id="form-status" class="form-status"></div>
+        </form>
+    </div>
+
+    <script>
+        // Form submission handler
+        document.getElementById('website-request-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const formStatus = document.getElementById('form-status');
+            const submitBtn = this.querySelector('.btn-submit');
+            const btnText = submitBtn.querySelector('.btn-text');
+            const btnLoading = submitBtn.querySelector('.btn-loading');
+            
+            // Show loading state
+            btnText.style.display = 'none';
+            btnLoading.style.display = 'inline';
+            submitBtn.disabled = true;
+            
+            // Collect form data
+            const formData = new FormData(this);
+            const data = {};
+            
+            // Convert FormData to object
+            for (let [key, value] of formData.entries()) {
+                if (key.includes('features') || this.elements[key]?.type === 'checkbox') {
+                    if (!data[key]) data[key] = [];
+                    data[key].push(value);
+                } else {
+                    data[key] = value;
+                }
+            }
+            
+            // Submit form to PHP API
+            fetch('submit-website-request.php', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.json())
+            .then(result => {
+                console.log('API Response:', result);
+                
+                if (result.success) {
+                    // Show success message
+                    formStatus.innerHTML = '<div class="success-message">' + result.message + '</div>';
+                    formStatus.style.display = 'block';
+                    
+                    // Reset form
+                    this.reset();
+                    
+                    // Scroll to success message
+                    formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                } else {
+                    // Show error message
+                    formStatus.innerHTML = '<div class="error-message">Error: ' + result.message + '</div>';
+                    formStatus.style.display = 'block';
+                    formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                formStatus.innerHTML = '<div class="error-message">Sorry, there was an error submitting your request. Please try again or contact us directly.</div>';
+                formStatus.style.display = 'block';
+                formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+            })
+            .finally(() => {
+                // Reset button
+                btnText.style.display = 'inline';
+                btnLoading.style.display = 'none';
+                submitBtn.disabled = false;
+            });
+        });
+    </script>
+</body>
+</html>
