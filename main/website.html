@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Website Development - Digital Solutions</title>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./shared-styles.css">
+    <style>
+      
+      /* Form Section Styling - Website Page Design */
+      .form-section {
+        background-color: #efefef;
+        min-height: 100vh;
+        padding: 80px 0;
+      }
+      
+      .form-container {
+        max-width: 800px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        border-radius: 20px;
+        padding: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      .form-header {
+        text-align: center;
+        margin-bottom: 40px;
+      }
+      
+      .form-title {
+        color: #212121;
+        font-size: 2.5rem;
+        font-weight: 900;
+        margin-bottom: 10px;
+      }
+      
+      .form-subtitle {
+        color: #666;
+        font-size: 1.1rem;
+      }
+      
+      .form-section-content {
+        margin-bottom: 40px;
+      }
+      
+      .section-title {
+        color: #212121;
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        padding-bottom: 10px;
+        border-bottom: 2px solid #00BCD4;
+      }
+      
+      .form-group {
+        margin-bottom: 20px;
+      }
+      
+      .form-row {
+        display: flex;
+        gap: 20px;
+      }
+      
+      .form-row .form-group {
+        flex: 1;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 8px;
+        color: #212121;
+        font-weight: 600;
+      }
+      
+      input, textarea, select {
+        width: 100%;
+        padding: 12px 16px;
+        border: 2px solid #e1e5e9;
+        border-radius: 10px;
+        font-size: 16px;
+        transition: all 0.3s ease;
+        background: white;
+      }
+      
+      input:focus, textarea:focus, select:focus {
+        outline: none;
+        border-color: #00BCD4;
+        box-shadow: 0 0 0 3px rgba(0, 188, 212, 0.1);
+      }
+      
+      textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+      
+      .checkbox-group {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        margin-top: 10px;
+      }
+      
+      .checkbox-item {
+        display: flex;
+        align-items: center;
+        background: #f8f9fa;
+        padding: 10px 15px;
+        border-radius: 8px;
+        border: 2px solid transparent;
+        transition: all 0.3s ease;
+        cursor: pointer;
+      }
+      
+      .checkbox-item:hover {
+        background: #e9ecef;
+        border-color: #00BCD4;
+      }
+      
+      .checkbox-item input[type="checkbox"] {
+        width: auto;
+        margin-right: 10px;
+      }
+      
+      .checkbox-item label {
+        margin: 0;
+        cursor: pointer;
+        color: #212121;
+        font-weight: 500;
+      }
+      
+      .btn-submit {
+        background: linear-gradient(135deg, #00BCD4 0%, #0097A7 100%);
+        color: white;
+        border: none;
+        padding: 15px 40px;
+        font-size: 18px;
+        font-weight: 600;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 100%;
+        margin-top: 20px;
+      }
+      
+      .btn-submit:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 10px 25px rgba(0, 188, 212, 0.3);
+        background: linear-gradient(135deg, #0097A7 0%, #00BCD4 100%);
+      }
+      
+      .btn-submit:disabled {
+        opacity: 0.7;
+        cursor: not-allowed;
+        transform: none;
+      }
+      
+      .form-status {
+        margin-top: 20px;
+        padding: 15px;
+        border-radius: 10px;
+        display: none;
+      }
+      
+      .success-message {
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+      }
+      
+      .error-message {
+        background: #f8d7da;
+        color: #721c24;
+        border: 1px solid #f5c6cb;
+      }
+      
+      .btn-loading {
+        display: none;
+      }
+      
+      @media (max-width: 768px) {
+        .form-row {
+          flex-direction: column;
+          gap: 0;
+        }
+        
+        .form-container {
+          margin: 10px;
+          padding: 20px;
+        }
+        
+        .form-title {
+          font-size: 2rem;
+        }
+      }
+    </style>
+  </head>
+    
+  <body>
+  <div class='page'>
+  <header>
+    <div class='swoosh position-fixed'></div>
+    <div class='sticky-nav difference d-flex justify-content-between'>
+      <div class='logo'><a href="index.html" style="color: inherit; text-decoration: none;">Peculiette</a></div>
+      <div class='menu box' id='nav-btn'>
+        <svg id="i1" class="icon" viewBox="20 30 60 40">
+        <path id="top-line-1"     d="M30,37 L70,37 Z"></path>
+        <path id="middle-line-1" 	d="M30,50 L70,50 Z"></path>
+        <path id="bottom-line-1" 	d="M30,63 L70,63 Z"></path>
+        </svg>
+      </div>
+    </div>
+    <div id='takeover-nav'>
+      <div class='container-fluid'>
+        <div class='row'>
+          <div class='nav-col nav-contact col-12 col-md-7 bg-black d-flex align-items-center justify-content-center position-relative py-5 px-3 order-1 order-md-0'>
+            <div class='position-absolute w-100 h-100 bg-topographic'></div>
+            <div class='content position-relative'>
+              <h2 class='nav-title white mb-5'>
+                Innovative<span class="d-inline green">&period;</span> Functional<span class="d-inline green">&period;</span> Affordable<span class="d-inline green">&period;</span>
+              </h2>
+              <ul class='contact-items white list-unstyled mb-5'>
+                <li class='pb-4'>
+                  <a class='text-decoration-none' href='tel:+15125219888'>512-521-9888</a>
+                </li>
+                <li class='pb-4'>
+                  <a class='text-decoration-none' href='mailto:hello@peculiette.com'>hello@peculiette.com</a>
+                </li>
+              </ul>
+              <div class='social'>
+                <a class='text-decoration-none green' href='https://github.com' target='_blank'>github</a>
+              </div>
+            </div>
+          </div>
+          <div class='nav-col nav-menu col-12 col-md-5 bg-green d-flex align-items-center pt-5 pb-3 pb-md-5 px-3 px-md-5 order-0 order-md-1'>
+            <ul class='nav-items list-unstyled'>
+              <li class='pb-3'>
+                <a class='text-decoration-none' href='index.html'>home</a>
+              </li>
+              <li class='pb-3'>
+                <a class='text-decoration-none' href='website.html'>website</a>
+              </li>
+              <li class='pb-3'>
+                <a class='text-decoration-none' href='hosting.html'>hosting</a>
+              </li>
+              <li class='pb-3'>
+                <a class='text-decoration-none' href='contact.html'>contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class='hero d-flex align-items-center justify-content-center'>
+    <div class='video-wrap'>
+      <video autoplay="" playsinline="" muted="" id="video-bg">
+      <source src="./assets/black-ink-spill.webm" type="video/webm">
+      Your browser does not support the video tag.
+      </video>
+      <div id="black-overlay" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: black; opacity: 0; z-index: 10; pointer-events: none;"></div>
+    </div>
+    <div class='content position-relative text-center mb-5'>
+      <h1 class='hero-title blend' style="color: white !important; text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;">
+        Website
+        <br>
+        Development
+      </h1>
+      <p class='blend fs-4 mt-4' style="color: white !important; text-shadow: 2px 2px 4px rgba(0,0,0,0.8) !important;">Creating digital experiences that captivate and convert</p>
+      <div class="mt-4">
+        <button id="toggle-form-btn" class="btn btn-primary btn-lg">Get Your Website</button>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Website Request Form Section -->
+  <section id="website-request" class="website-request" style="display: none;">
+      <div class="container">
+          <div class="request-content">
+              <!-- Header -->
+              <div class="request-header">
+                  <h1 class="page-title">Website Development Request</h1>
+                  <p class="page-subtitle">Tell us about your project and we'll create a custom solution for you</p>
+              </div>
+
+              <!-- Form Container -->
+              <div class="request-form-container">
+                  <form id="website-request-form" class="website-form">
+                      
+                      <!-- Contact Information -->
+                      <div class="form-section">
+                          <h2 class="section-title">Contact Information</h2>
+                          <div class="form-row">
+                              <div class="form-group">
+                                  <label for="full-name">Full Name *</label>
+                                  <input type="text" id="full-name" name="full_name" class="glass-input" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="email">Email Address *</label>
+                                  <input type="email" id="email" name="email" class="glass-input" required>
+                              </div>
+                          </div>
+                          <div class="form-row">
+                              <div class="form-group">
+                                  <label for="phone">Phone Number</label>
+                                  <input type="tel" id="phone" name="phone" class="glass-input">
+                              </div>
+                              <div class="form-group">
+                                  <label for="company">Company/Organization</label>
+                                  <input type="text" id="company" name="company" class="glass-input">
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- Project Details -->
+                      <div class="form-section">
+                          <h2 class="section-title">Project Details</h2>
+                          <div class="form-group">
+                              <label for="project-name">Project Name *</label>
+                              <input type="text" id="project-name" name="project_name" class="glass-input" required>
+                          </div>
+                          <div class="form-group">
+                              <label for="project-description">Project Description *</label>
+                              <textarea id="project-description" name="project_description" class="glass-input" rows="4" 
+                                  placeholder="Describe your website goals, target audience, and any specific requirements..." required></textarea>
+                          </div>
+                          <div class="form-group">
+                              <label for="timeline">Desired Timeline *</label>
+                              <select id="timeline" name="timeline" class="glass-input" required>
+                                  <option value="">Select...</option>
+                                  <option value="asap">As soon as possible</option>
+                                  <option value="1-2-weeks">1-2 weeks</option>
+                                  <option value="3-4-weeks">3-4 weeks</option>
+                                  <option value="1-2-months">1-2 months</option>
+                                  <option value="flexible">Flexible</option>
+                              </select>
+                          </div>
+                      </div>
+
+                      <!-- Standard Features Included -->
+                      <div class="form-section">
+                          <h2 class="section-title">Standard Features (Included in Base Package)</h2>
+                          <p class="section-note">All projects include these features at no additional cost:</p>
+                          <div class="features-grid readonly-features">
+                              <div class="feature-item included">
+                                  <span class="feature-icon">✓</span>
+                                  <span class="feature-text">Responsive Design (Mobile, Tablet, Desktop)</span>
+                              </div>
+                              <div class="feature-item included">
+                                  <span class="feature-icon">✓</span>
+                                  <span class="feature-text">Custom Design (No Templates)</span>
+                              </div>
+                              <div class="feature-item included">
+                                  <span class="feature-icon">✓</span>
+                                  <span class="feature-text">Domain Registration (1 Year)</span>
+                              </div>
+                              <div class="feature-item included">
+                                  <span class="feature-icon">✓</span>
+                                  <span class="feature-text">Custom Business Email</span>
+                              </div>
+                              <div class="feature-item included">
+                                  <span class="feature-icon">✓</span>
+                                  <span class="feature-text">Contact/Lead Forms</span>
+                              </div>
+                              <div class="feature-item included">
+                                  <span class="feature-icon">✓</span>
+                                  <span class="feature-text">SEO Optimization</span>
+                              </div>
+                              <div class="feature-item included">
+                                  <span class="feature-icon">✓</span>
+                                  <span class="feature-text">Social Media Integration</span>
+                              </div>
+                              <div class="feature-item included">
+                                  <span class="feature-icon">✓</span>
+                                  <span class="feature-text">Blog or News Section</span>
+                              </div>
+                              <div class="feature-item included">
+                                  <span class="feature-icon">✓</span>
+                                  <span class="feature-text">Image Gallery or Slider</span>
+                              </div>
+                              <div class="feature-item included">
+                                  <span class="feature-icon">✓</span>
+                                  <span class="feature-text">Brand Integration (Your Logo and Colors)</span>
+                              </div>
+                              <div class="feature-item included">
+                                  <span class="feature-icon">✓</span>
+                                  <span class="feature-text">Complete File Ownership</span>
+                              </div>
+                              <div class="feature-item included">
+                                  <span class="feature-icon">✓</span>
+                                  <span class="feature-text">Security Best Practices</span>
+                              </div>
+                          </div>
+                      </div>
+
+                      <!-- Advanced Features -->
+                      <div class="form-section">
+                          <h2 class="section-title">Advanced Features (Additional Options)</h2>
+                          <p class="section-note">Select any additional features you need for your project. <strong>Additional costs apply for these features.</strong></p>
+                          
+                          <!-- Database Integration -->
+                          <div class="advanced-feature-group">
+                              <div class="form-group checkbox-group">
+                                  <label class="checkbox-label">
+                                      <input type="checkbox" name="database_integration" id="database-integration" class="feature-checkbox">
+                                      <span class="checkbox-text">
+                                          <strong>Database Integration</strong>
+                                          <span class="feature-description">Store and manage data like user accounts, products, bookings, etc.</span>
+                                      </span>
+                                  </label>
+                              </div>
+                              <div class="nested-input" id="database-details" style="display: none;">
+                                  <label for="database-type">What type of data will you be storing?</label>
+                                  <textarea id="database-type" name="database_type" class="glass-input" rows="2" 
+                                      placeholder="E.g., user profiles, product inventory, booking information..."></textarea>
+                              </div>
+                          </div>
+
+                          <!-- Payment Processing -->
+                          <div class="advanced-feature-group">
+                              <div class="form-group checkbox-group">
+                                  <label class="checkbox-label">
+                                      <input type="checkbox" name="payment_processing" id="payment-processing" class="feature-checkbox">
+                                      <span class="checkbox-text">
+                                          <strong>Payment Processing</strong>
+                                          <span class="feature-description">Accept credit cards, subscriptions, or one-time payments (Stripe integration)</span>
+                                      </span>
+                                  </label>
+                              </div>
+                              <div class="nested-input" id="payment-details" style="display: none;">
+                                  <label>Payment Type Needed:</label>
+                                  <div class="radio-group">
+                                      <label class="radio-label">
+                                          <input type="radio" name="payment_type" value="one-time">
+                                          <span>One-time payments</span>
+                                      </label>
+                                      <label class="radio-label">
+                                          <input type="radio" name="payment_type" value="subscriptions">
+                                          <span>Recurring subscriptions</span>
+                                      </label>
+                                      <label class="radio-label">
+                                          <input type="radio" name="payment_type" value="both">
+                                          <span>Both</span>
+                                      </label>
+                                  </div>
+                              </div>
+                          </div>
+
+                          <!-- User Authentication -->
+                          <div class="advanced-feature-group">
+                              <div class="form-group checkbox-group">
+                                  <label class="checkbox-label">
+                                      <input type="checkbox" name="user_authentication" id="user-authentication" class="feature-checkbox">
+                                      <span class="checkbox-text">
+                                          <strong>User Authentication System</strong>
+                                          <span class="feature-description">User registration, login, password management, and role-based access</span>
+                                      </span>
+                                  </label>
+                              </div>
+                              <div class="nested-input" id="auth-details" style="display: none;">
+                                  <label for="user-roles">Describe the user roles needed:</label>
+                                  <input type="text" id="user-roles" name="user_roles" class="glass-input" 
+                                      placeholder="E.g., Admin, Members, Customers...">
+                              </div>
+                          </div>
+
+                          <!-- API Integrations -->
+                          <div class="advanced-feature-group">
+                              <div class="form-group checkbox-group">
+                                  <label class="checkbox-label">
+                                      <input type="checkbox" name="api_integrations" id="api-integrations" class="feature-checkbox">
+                                      <span class="checkbox-text">
+                                          <strong>API Integrations</strong>
+                                          <span class="feature-description">Connect to external services (APIs are Application Programming Interfaces that allow different software systems to communicate with each other)</span>
+                                      </span>
+                                  </label>
+                              </div>
+                              <div class="nested-input" id="api-details" style="display: none;">
+                                  <label for="num-apis">Number of API Integrations Needed:</label>
+                                  <select id="num-apis" name="num_apis" class="glass-input">
+                                      <option value="">Select...</option>
+                                      <option value="1">1 integration</option>
+                                      <option value="2">2 integrations</option>
+                                      <option value="3">3 integrations</option>
+                                      <option value="4-5">4-5 integrations</option>
+                                      <option value="6+">6+ integrations</option>
+                                  </select>
+                                  <label for="api-services" style="margin-top: 15px;">Which services do you need to integrate?</label>
+                                  <textarea id="api-services" name="api_services" class="glass-input" rows="2" 
+                                      placeholder="E.g., Calendly for scheduling, Google Analytics, social media feeds, email marketing platforms, CRM systems..."></textarea>
+                              </div>
+                          </div>
+
+                          <!-- E-commerce -->
+                          <div class="advanced-feature-group">
+                              <div class="form-group checkbox-group">
+                                  <label class="checkbox-label">
+                                      <input type="checkbox" name="ecommerce" id="ecommerce" class="feature-checkbox">
+                                      <span class="checkbox-text">
+                                          <strong>E-commerce Functionality</strong>
+                                          <span class="feature-description">Online store with product catalog, shopping cart, and checkout system</span>
+                                      </span>
+                                  </label>
+                              </div>
+                              <div class="nested-input" id="ecommerce-details" style="display: none;">
+                                  <label for="num-products">Estimated Number of Products:</label>
+                                  <select id="num-products" name="num_products" class="glass-input">
+                                      <option value="">Select...</option>
+                                      <option value="1-10">1-10 products</option>
+                                      <option value="11-50">11-50 products</option>
+                                      <option value="51-100">51-100 products</option>
+                                      <option value="100+">100+ products</option>
+                                  </select>
+                              </div>
+                          </div>
+
+                          <!-- Booking System -->
+                          <div class="advanced-feature-group">
+                              <div class="form-group checkbox-group">
+                                  <label class="checkbox-label">
+                                      <input type="checkbox" name="booking_system" id="booking-system" class="feature-checkbox">
+                                      <span class="checkbox-text">
+                                          <strong>Booking/Appointment System</strong>
+                                          <span class="feature-description">Online scheduling for services, appointments, or reservations</span>
+                                      </span>
+                                  </label>
+                              </div>
+                          </div>
+
+                          <!-- Content Management -->
+                          <div class="advanced-feature-group">
+                              <div class="form-group checkbox-group">
+                                  <label class="checkbox-label">
+                                      <input type="checkbox" name="content_management" id="content-management" class="feature-checkbox">
+                                      <span class="checkbox-text">
+                                          <strong>Advanced Content Management</strong>
+                                          <span class="feature-description">Easy-to-use interface for updating content without coding knowledge</span>
+                                      </span>
+                                  </label>
+                              </div>
+                          </div>
+
+                          <!-- Analytics Dashboard -->
+                          <div class="advanced-feature-group">
+                              <div class="form-group checkbox-group">
+                                  <label class="checkbox-label">
+                                      <input type="checkbox" name="analytics_dashboard" id="analytics-dashboard" class="feature-checkbox">
+                                      <span class="checkbox-text">
+                                          <strong>Custom Analytics Dashboard</strong>
+                                          <span class="feature-description">Track visitors, conversions, and other key metrics with visual reports</span>
+                                      </span>
+                                  </label>
+                              </div>
+                          </div>
+
+                      </div>
+
+                      <!-- Additional Information -->
+                      <div class="form-section">
+                          <h2 class="section-title">Additional Information</h2>
+                          <div class="form-group">
+                              <label for="existing-website">Do you have an existing website?</label>
+                              <select id="existing-website" name="existing_website" class="glass-input">
+                                  <option value="no">No, this is a new website</option>
+                                  <option value="yes-redesign">Yes, I need a redesign</option>
+                                  <option value="yes-migrate">Yes, I need to migrate content</option>
+                              </select>
+                          </div>
+                          <div class="form-group" id="existing-url-group" style="display: none;">
+                              <label for="existing-url">Existing Website URL</label>
+                              <input type="url" id="existing-url" name="existing_url" class="glass-input" 
+                                  placeholder="https://yourcurrentwebsite.com">
+                          </div>
+                          <div class="form-row">
+                              <div class="form-group">
+                                  <label for="desired-url-1">Desired URL (First Choice) *</label>
+                                  <input type="text" id="desired-url-1" name="desired_url_1" class="glass-input" 
+                                      placeholder="e.g., yourbusiness.com" required>
+                              </div>
+                              <div class="form-group">
+                                  <label for="desired-url-2">Desired URL (Second Choice)</label>
+                                  <input type="text" id="desired-url-2" name="desired_url_2" class="glass-input" 
+                                      placeholder="e.g., yourbusiness.net">
+                              </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="alternative-words">Alternative Words/Phrases for URL</label>
+                              <textarea id="alternative-words" name="alternative_words" class="glass-input" rows="2" 
+                                  placeholder="List other words, phrases, or variations that could work for your domain name (e.g., 'mycompany', 'bestservice', 'premiumsolutions')"></textarea>
+                          </div>
+                          <div class="form-group">
+                              <label for="additional-notes">Additional Notes or Questions</label>
+                              <textarea id="additional-notes" name="additional_notes" class="glass-input" rows="4" 
+                                  placeholder="Any other details, questions, or specific requirements..."></textarea>
+                          </div>
+                      </div>
+
+                      <!-- Submit Button -->
+                      <div class="form-actions">
+                          <button type="submit" class="btn btn-primary btn-large">
+                              <span class="btn-text">Submit Request</span>
+                              <span class="btn-loading" style="display: none;">Sending...</span>
+                          </button>
+                          <p class="form-note">We'll review your request and get back to you within 24 hours with a detailed quote.</p>
+                      </div>
+
+                      <!-- Status Messages -->
+                      <div id="form-status" class="form-status"></div>
+                  </form>
+              </div>
+          </div>
+      </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer-main">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="footer-content">
+            <h4>Peculiette</h4>
+            <p>Digital experiences that captivate and convert.</p>
+            <div class="footer-contact">
+              <p><a href="tel:+15125219888">512-521-9888</a></p>
+              <p><a href="mailto:hello@peculiette.com">hello@peculiette.com</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="footer-links">
+            <h5>Services</h5>
+            <ul class="list-unstyled">
+              <li><a href="website.html">Website Design</a></li>
+              <li><a href="hosting.html">Hosting</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="footer-bottom">
+            <p>&copy; 2024 Peculiette. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+<div class='custom-cursor'></div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/409445/animateAnything.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js'></script>
+<script src="./script.js"></script>
+<script>
+  // Debug video loading
+  document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('video-bg');
+    if (video) {
+      video.addEventListener('loadstart', function() {
+        console.log('Video loading started');
+      });
+      video.addEventListener('canplay', function() {
+        console.log('Video can play');
+        console.log('Video dimensions:', video.videoWidth, 'x', video.videoHeight);
+        console.log('Video current time:', video.currentTime);
+        console.log('Video paused:', video.paused);
+      });
+      video.addEventListener('error', function(e) {
+        console.log('Video error:', e);
+      });
+      video.addEventListener('loadeddata', function() {
+        console.log('Video data loaded');
+        console.log('Video ready state:', video.readyState);
+      });
+      video.addEventListener('playing', function() {
+        console.log('Video is playing');
+      });
+      video.addEventListener('timeupdate', function() {
+        // Check if we're 3 seconds from the end
+        const fadeStartTime = video.duration - 3;
+        const blackOverlay = document.getElementById('black-overlay');
+        if (video.currentTime >= fadeStartTime && blackOverlay.style.opacity !== '1') {
+          console.log('Starting fade to black 3 seconds before end');
+          blackOverlay.style.transition = 'opacity 3s ease-out';
+          blackOverlay.style.opacity = '1';
+        }
+      });
+      video.addEventListener('ended', function() {
+        console.log('Video ended');
+      });
+      // Force play
+      setTimeout(function() {
+        video.play().catch(function(error) {
+          console.log('Play failed:', error);
+        });
+      }, 1000);
+    }
+  });
+
+  // Trigger animations when hamburger menu opens
+  document.addEventListener('DOMContentLoaded', function() {
+    // Toggle form functionality
+    const toggleBtn = document.getElementById('toggle-form-btn');
+    const formSection = document.getElementById('website-request');
+    
+    if (toggleBtn && formSection) {
+      toggleBtn.addEventListener('click', function() {
+        if (formSection.style.display === 'none') {
+          formSection.style.display = 'block';
+          toggleBtn.textContent = 'Hide Form';
+          // Smooth scroll to form
+          setTimeout(() => {
+            formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          }, 100);
+        } else {
+          formSection.style.display = 'none';
+          toggleBtn.textContent = 'Get Your Website';
+        }
+      });
+    }
+    
+    // Show/hide nested inputs based on checkbox state
+    const featureCheckboxes = document.querySelectorAll('.feature-checkbox');
+    
+    featureCheckboxes.forEach(checkbox => {
+      checkbox.addEventListener('change', function() {
+        const featureGroup = this.closest('.advanced-feature-group');
+        const nestedInput = featureGroup.querySelector('.nested-input');
+        
+        if (nestedInput) {
+          nestedInput.style.display = this.checked ? 'block' : 'none';
+        }
+      });
+    });
+
+    // Show/hide existing URL field based on existing website selection
+    const existingWebsiteSelect = document.getElementById('existing-website');
+    const existingUrlGroup = document.getElementById('existing-url-group');
+    
+    if (existingWebsiteSelect && existingUrlGroup) {
+      existingWebsiteSelect.addEventListener('change', function() {
+        if (this.value === 'yes-redesign' || this.value === 'yes-migrate') {
+          existingUrlGroup.style.display = 'block';
+        } else {
+          existingUrlGroup.style.display = 'none';
+        }
+      });
+    }
+    
+    // Form submission handler
+    const form = document.getElementById('website-request-form');
+    if (form) {
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        const formStatus = document.getElementById('form-status');
+        const submitBtn = this.querySelector('.btn-submit');
+        const btnText = submitBtn.querySelector('.btn-text');
+        const btnLoading = submitBtn.querySelector('.btn-loading');
+        
+        // Show loading state
+        btnText.style.display = 'none';
+        btnLoading.style.display = 'inline';
+        submitBtn.disabled = true;
+        
+        // Collect form data
+        const formData = new FormData(this);
+        const data = {};
+        
+        // Convert FormData to object
+        for (let [key, value] of formData.entries()) {
+          if (key.includes('features') || this.elements[key]?.type === 'checkbox') {
+            if (!data[key]) data[key] = [];
+            data[key].push(value);
+          } else {
+            data[key] = value;
+          }
+        }
+        
+        // Submit form to PHP API
+        fetch('submit-website-request.php', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(data)
+        })
+        .then(response => response.json())
+        .then(result => {
+          console.log('API Response:', result);
+          
+          if (result.success) {
+            // Show success message
+            formStatus.innerHTML = '<div class="success-message">' + result.message + '</div>';
+            formStatus.style.display = 'block';
+            
+            // Reset form
+            this.reset();
+            
+            // Scroll to success message
+            formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          } else {
+            // Show error message
+            formStatus.innerHTML = '<div class="error-message">Error: ' + result.message + '</div>';
+            formStatus.style.display = 'block';
+            formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }
+        })
+        .catch(error => {
+          console.error('Error:', error);
+          formStatus.innerHTML = '<div class="error-message">Sorry, there was an error submitting your request. Please try again or contact us directly.</div>';
+          formStatus.style.display = 'block';
+          formStatus.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        })
+        .finally(() => {
+          // Reset button
+          btnText.style.display = 'inline';
+          btnLoading.style.display = 'none';
+          submitBtn.disabled = false;
+        });
+      });
+    }
+    
+    const navBtn = document.getElementById('nav-btn');
+    const takeoverNav = document.getElementById('takeover-nav');
+    
+    if (navBtn && takeoverNav) {
+      navBtn.addEventListener('click', function() {
+        // Remove animate class from all elements
+        const animatedElements = takeoverNav.querySelectorAll('.nav-title, .contact-items li, .social');
+        animatedElements.forEach(el => {
+          el.classList.remove('animate');
+        });
+        
+        // Add animate class after a short delay to trigger animations
+        setTimeout(() => {
+          animatedElements.forEach(el => {
+            el.classList.add('animate');
+          });
+        }, 100);
+      });
+    }
+  });
+</script>
+
+  </body>
+  
+</html>

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hosting Services - Digital Solutions</title>
+    <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css'>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="./shared-styles.css">
+    <style>
+      /* Hosting page specific styles - none needed currently */
+    </style>
+  </head>
+    
+  <body>
+  <div class='page'>
+  <header>
+    <div class='swoosh position-fixed'></div>
+    <div class='sticky-nav difference d-flex justify-content-between'>
+      <div class='logo'><a href="index.html" style="color: inherit; text-decoration: none;">Peculiette</a></div>
+      <div class='menu box' id='nav-btn'>
+        <svg id="i1" class="icon" viewBox="20 30 60 40">
+        <path id="top-line-1"     d="M30,37 L70,37 Z"></path>
+        <path id="middle-line-1" 	d="M30,50 L70,50 Z"></path>
+        <path id="bottom-line-1" 	d="M30,63 L70,63 Z"></path>
+        </svg>
+      </div>
+    </div>
+    <div id='takeover-nav'>
+      <div class='container-fluid'>
+        <div class='row'>
+          <div class='nav-col nav-contact col-12 col-md-7 bg-black d-flex align-items-center justify-content-center position-relative py-5 px-3 order-1 order-md-0'>
+            <div class='position-absolute w-100 h-100 bg-topographic'></div>
+            <div class='content position-relative'>
+              <h2 class='nav-title white mb-5'>
+                Innovative<span class="d-inline green">&period;</span> Functional<span class="d-inline green">&period;</span> Affordable<span class="d-inline green">&period;</span>
+              </h2>
+              <ul class='contact-items white list-unstyled mb-5'>
+                <li class='pb-4'>
+                  <a class='text-decoration-none' href='tel:+15125219888'>512-521-9888</a>
+                </li>
+                <li class='pb-4'>
+                  <a class='text-decoration-none' href='mailto:hello@peculiette.com'>hello@peculiette.com</a>
+                </li>
+              </ul>
+              <div class='social'>
+                <a class='text-decoration-none green' href='https://github.com' target='_blank'>github</a>
+              </div>
+            </div>
+          </div>
+          <div class='nav-col nav-menu col-12 col-md-5 bg-green d-flex align-items-center pt-5 pb-3 pb-md-5 px-3 px-md-5 order-0 order-md-1'>
+            <ul class='nav-items list-unstyled'>
+              <li class='pb-3'>
+                <a class='text-decoration-none' href='index.html'>home</a>
+              </li>
+              <li class='pb-3'>
+                <a class='text-decoration-none' href='website.html'>website</a>
+              </li>
+              <li class='pb-3'>
+                <a class='text-decoration-none' href='hosting.html'>hosting</a>
+              </li>
+              <li class='pb-3'>
+                <a class='text-decoration-none' href='contact.html'>contact</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class='hero d-flex align-items-center justify-content-center'>
+    <div class='video-wrap'>
+      <video autoplay="" playsinline="" loop="" muted="" id="video-bg">
+      <source src="./assets/clouds-flying.webm" type="video/webm">
+      </video>
+    </div>
+    <div class='content position-relative text-center mb-5'>
+      <h1 class='hero-title blend'>
+        Cloud
+        <br>
+        Hosting
+      </h1>
+      <p class='blend fs-4 mt-4'>Reliable hosting solutions in the cloud</p>
+    </div>
+  </section>
+  
+  <!-- Footer -->
+  <footer class="footer-main">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="footer-content">
+            <h4>Peculiette</h4>
+            <p>Digital experiences that captivate and convert.</p>
+            <div class="footer-contact">
+              <p><a href="tel:+15125219888">512-521-9888</a></p>
+              <p><a href="mailto:hello@peculiette.com">hello@peculiette.com</a></p>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <div class="footer-links">
+            <h5>Services</h5>
+            <ul class="list-unstyled">
+              <li><a href="website.html">Website Design</a></li>
+              <li><a href="hosting.html">Hosting</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <div class="footer-bottom">
+            <p>&copy; 2024 Peculiette. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+</div>
+<div class='custom-cursor'></div>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.min.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/gsap/2.0.1/TweenMax.min.js'></script>
+<script src='https://s3-us-west-2.amazonaws.com/s.cdpn.io/409445/animateAnything.js'></script>
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js'></script>
+<script src="./script.js"></script>
+<script>
+  // Debug video loading
+  document.addEventListener('DOMContentLoaded', function() {
+    const video = document.getElementById('video-bg');
+    if (video) {
+      video.addEventListener('loadstart', function() {
+        console.log('Video loading started');
+      });
+      video.addEventListener('canplay', function() {
+        console.log('Video can play');
+        console.log('Video dimensions:', video.videoWidth, 'x', video.videoHeight);
+        console.log('Video current time:', video.currentTime);
+        console.log('Video paused:', video.paused);
+      });
+      video.addEventListener('error', function(e) {
+        console.log('Video error:', e);
+      });
+      video.addEventListener('loadeddata', function() {
+        console.log('Video data loaded');
+        console.log('Video ready state:', video.readyState);
+      });
+      video.addEventListener('playing', function() {
+        console.log('Video is playing');
+      });
+      // Force play
+      setTimeout(function() {
+        video.play().catch(function(error) {
+          console.log('Play failed:', error);
+        });
+      }, 1000);
+    }
+  });
+
+  // Trigger animations when hamburger menu opens
+  document.addEventListener('DOMContentLoaded', function() {
+    const navBtn = document.getElementById('nav-btn');
+    const takeoverNav = document.getElementById('takeover-nav');
+    
+    if (navBtn && takeoverNav) {
+      navBtn.addEventListener('click', function() {
+        // Remove animate class from all elements
+        const animatedElements = takeoverNav.querySelectorAll('.nav-title, .contact-items li, .social');
+        animatedElements.forEach(el => {
+          el.classList.remove('animate');
+        });
+        
+        // Add animate class after a short delay to trigger animations
+        setTimeout(() => {
+          animatedElements.forEach(el => {
+            el.classList.add('animate');
+          });
+        }, 100);
+      });
+    }
+  });
+</script>
+
+  </body>
+  
+</html>
